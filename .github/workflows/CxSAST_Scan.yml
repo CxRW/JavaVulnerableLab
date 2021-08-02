@@ -34,8 +34,67 @@ jobs:
         checkmarx_url: https://cxprivatecloud.checkmarx.net/
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
-        break_build: false
-        scanners: sast
-        preset: high and medium
-        bug_tracker: JIRA
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config
+
+cx-flow:
+  bug-tracker: JIRA
+  enabled-vulnerability-scanners:
+  - sast
+  # - sca
+  branches:
+  - master
+  filter-severity:
+  # - High
+  filter-category:
+  #- SQL_Injection
+  #- Stored_XSS
+  #- Reflected_XSS_All_Clients
+  filter-cwe:
+  filter-status:
+  # - Urgent
+  # - Confirmed
+  # - To Verify
+  mitre-url: https://cwe.mitre.org/data/definitions/%s.html
+  #wiki-url: https://custodela.atlassian.net/wiki/spaces/AS/pages/79462432/Remediation+Guidance
+  codebash-url: https://checkmarx-demo.codebashing.com/courses/
+
+
+
+jira:
+  url: https://cxrw.atlassian.net/
+  username: ryan.wakeham@checkmarx.com
+  token: 
+  project: JVL
+  issue-type: Bug
+  priorities:
+    High: High
+    Medium: Medium
+    Low: Low
+    Informational: Lowest
+  open-transition: In Progress
+  close-transition: Done
+  open-status:
+    - Backlog
+    - Selected for Development
+    - In Progress
+  closed-status:
+    - Done
+  fields:
+    - type: result
+      name: application
+      jira-field-name: Application
+      jira-field-type: label
+    - type: result
+      name: cwe
+      jira-field-name: CWEs
+      jira-field-type: label
+    - type: result
+      name: category
+      jira-field-name: Category
+      jira-field-type: label
+    - type: result
+      name: loc
+      jira-field-name: LOC
+      jira-field-type: label
+      jira-default-value: XXXXX
+
+
