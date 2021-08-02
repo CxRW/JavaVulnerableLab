@@ -38,4 +38,4 @@ jobs:
         scanners: sast
         preset: high and medium
         bug_tracker: JIRA
-        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config
