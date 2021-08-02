@@ -37,5 +37,5 @@ jobs:
         break_build: false
         scanners: sast
         preset: high and medium
-        # bug_tracker: GitHub
+        bug_tracker: JIRA
         params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }}
