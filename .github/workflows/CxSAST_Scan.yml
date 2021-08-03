@@ -28,14 +28,20 @@ jobs:
     - name: Checkmarx CxFlow Action
       uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1 #Github Action version
       with:
-        project: Java Vulnerable Lab - RWDemo # <-- Insert Checkmarx SAST Project Name
+        project: Java Vulnerable Lab - RW Demo GitHub Action # <-- Insert Checkmarx SAST Project Name
         team: /CxServer/SP/America/checkmarx.com - 1
         checkmarx_username: ${{ secrets.CHECKMARX_USER }} # To be stored in GitHub Secrets.
         checkmarx_url: https://cxprivatecloud.checkmarx.net/
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
+        sca_api_url: https://api.scacheckmarx.com
+        sca_app_url: https://sca.scacheckmarx.com
+        sca_access_control_url: https://platform.checkmarx.net
+        sca_tenant: SCA-Champions  # <-- Insert Checkmarx CxSCA Tenant
+        sca_username: ${{ secrets.CHECKMARX_SCA_USERNAME }} # To be stored in GitHub Secrets.
+        sca_password: ${{ secrets.CHECKMARX_SCA_PASSWORD }} # To be stored in GitHub Secrets.
         break_build: false
-        scanners: sast
+        scanners: sast, sca
         preset: high and medium
         bug_tracker: GitHub
         incremental: false
