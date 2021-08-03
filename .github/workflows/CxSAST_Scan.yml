@@ -5,6 +5,11 @@
 #   - CHECKMARX_USER
 #   - CHECKMARX_PASSWORD
 #   - CHECKMARX_CLIENT_SECRET
+#   - CHECKMARX_SCA_USERNAME
+#   - CHECKMARX_SCA_PASSWORD
+#   - JIRA_URL
+#   - JIRA_USER
+#   - JIRA_TOKEN
 #
 # The following variables must be inserted below:
 #   - <ProjectName>
@@ -46,7 +51,3 @@ jobs:
         bug_tracker: GitHub
         incremental: false
         params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --bug-tracker=jira --config=cx.config --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
-
-
-
-
