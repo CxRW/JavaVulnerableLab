@@ -36,7 +36,7 @@ jobs:
         project: Java Vulnerable Lab - RW Demo GitHub Action # <-- Insert Checkmarx SAST Project Name
         team: /CxServer/SP/America/checkmarx.com - 1
         checkmarx_username: ${{ secrets.CHECKMARX_USER }} # To be stored in GitHub Secrets.
-        checkmarx_url: https://cxprivatecloud.checkmarx.net/
+        checkmarx_url: https://cxrw.ngrok.io
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }} # To be stored in GitHub Secrets.
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }} # To be stored in GitHub Secrets.
         sca_api_url: https://api.scacheckmarx.com
